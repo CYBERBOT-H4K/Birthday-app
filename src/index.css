@@ -1,0 +1,164 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 340 30% 97%;
+    --foreground: 340 20% 20%;
+
+    --card: 340 40% 98%;
+    --card-foreground: 340 20% 20%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 340 20% 20%;
+
+    --primary: 340 65% 65%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 280 40% 85%;
+    --secondary-foreground: 280 30% 25%;
+
+    --muted: 340 20% 93%;
+    --muted-foreground: 340 10% 50%;
+
+    --accent: 30 80% 75%;
+    --accent-foreground: 30 60% 20%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 340 30% 90%;
+    --input: 340 30% 90%;
+    --ring: 340 65% 65%;
+
+    --radius: 1rem;
+
+    /* Custom tokens */
+    --rose: 340 65% 65%;
+    --rose-light: 340 60% 90%;
+    --lavender: 280 40% 75%;
+    --lavender-light: 280 40% 92%;
+    --peach: 20 80% 80%;
+    --peach-light: 20 80% 93%;
+    --mint: 160 40% 75%;
+    --mint-light: 160 40% 92%;
+    --gold: 45 80% 60%;
+    --gold-light: 45 80% 90%;
+
+    --glass-bg: 340 40% 98% / 0.6;
+    --glass-border: 340 40% 90% / 0.4;
+    --shadow-glow: 0 0 30px hsl(340 65% 65% / 0.2);
+
+    --font-display: 'Dancing Script', cursive;
+    --font-body: 'Quicksand', sans-serif;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+  }
+
+  h1, h2, h3 {
+    font-family: var(--font-display);
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply rounded-2xl border;
+    background: hsl(var(--glass-bg));
+    border-color: hsl(var(--glass-border));
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: var(--shadow-glow);
+  }
+
+  .gradient-rose {
+    background: linear-gradient(135deg, hsl(var(--rose-light)), hsl(var(--lavender-light)));
+  }
+
+  .gradient-hero {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--rose-light)),
+      hsl(var(--lavender-light)),
+      hsl(var(--peach-light)),
+      hsl(var(--mint-light))
+    );
+    background-size: 400% 400%;
+    animation: gradient-shift 8s ease infinite;
+  }
+
+  .text-gradient {
+    background: linear-gradient(135deg, hsl(var(--rose)), hsl(var(--lavender)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .glow-rose {
+    box-shadow: 0 0 20px hsl(var(--rose) / 0.3), 0 0 60px hsl(var(--rose) / 0.1);
+  }
+
+  .glow-gold {
+    box-shadow: 0 0 20px hsl(var(--gold) / 0.4), 0 0 60px hsl(var(--gold) / 0.15);
+  }
+}
+
+@layer utilities {
+  @keyframes gradient-shift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+  }
+
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+
+  @keyframes sparkle {
+    0%, 100% { opacity: 0; transform: scale(0); }
+    50% { opacity: 1; transform: scale(1); }
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 10px hsl(var(--rose) / 0.3); }
+    50% { box-shadow: 0 0 30px hsl(var(--rose) / 0.6), 0 0 60px hsl(var(--rose) / 0.3); }
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .animate-shimmer {
+    background-size: 200% 100%;
+    animation: shimmer 3s linear infinite;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+}
